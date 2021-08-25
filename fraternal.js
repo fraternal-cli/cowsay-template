@@ -1,4 +1,4 @@
-const { Fraternal } = require('../../dist');
+const { Fraternal } = require('fraternal');
 
 module.exports = new Fraternal()
   .derive('packageName', ({ values }) => values.projectName.toLowerCase())
