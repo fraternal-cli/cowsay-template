@@ -1,6 +1,6 @@
-const { Fraternal } = require('fraternal');
+const { Config } = require('fraternal');
 
-module.exports = new Fraternal()
+module.exports = Config()
   .derive('packageName', ({ values }) => values.projectName.toLowerCase())
   .prompt('text', 'What does the cow say?')
   .setupFiles()
