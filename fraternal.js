@@ -5,4 +5,12 @@ module.exports = Config()
   .prompt('text', 'What does the cow say?')
   .setupFiles()
   .run('npm install')
-  .run('npm run build');
+  .run('npm run build')
+  .log(
+    ({ chalk, values }) => `
+Your cow is ready to talk!
+
+Next you'll want to run
+  ${chalk.green(`cd ${values.projectName}`)}
+  ${chalk.green('npm start')}`
+  );
