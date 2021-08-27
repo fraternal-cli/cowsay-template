@@ -4,7 +4,8 @@ module.exports = Config()
   .derive('packageName', ({ projectName }) => projectName.toLowerCase().trim().split(/\s+/).join('-'), {
     searchText: '~~package-name~~',
   })
-  .prompt('text', 'What does the cow say?', { transform: (input) => input.split("'").join("\\'") })
+  .prompt('text', 'What does the cow say?')
+  .derive('cowText', ({ values }) => values.text.split("'").join("\\'"))
   .derive('topLine', ({ values }) =>
     Array(values.text.length + 2)
       .fill('_')
