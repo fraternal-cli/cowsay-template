@@ -5,6 +5,16 @@ module.exports = Config()
     searchText: '~~package-name~~',
   })
   .prompt('text', 'What does the cow say?', { transform: (input) => input.split("'").join("\\'") })
+  .derive('topLine', ({ values }) =>
+    Array(values.text.length + 2)
+      .fill('_')
+      .join()
+  )
+  .derive('bottomLine', ({ values }) =>
+    Array(values.text.length + 2)
+      .fill('-')
+      .join()
+  )
   .setupFiles()
   .run('npm install')
   .run('npm run build')
