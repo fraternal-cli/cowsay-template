@@ -2,6 +2,6 @@ import cowsay from 'cowsay';
 
 console.log(
   cowsay.say({
-    text: `__text__`,
+    text: '__text__',
   })
 );

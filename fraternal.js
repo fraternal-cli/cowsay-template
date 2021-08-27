@@ -1,16 +1,18 @@
 const { Config } = require('fraternal');
 
 module.exports = Config()
-  .derive('packageName', ({ values }) => values.projectName.toLowerCase())
-  .prompt('text', 'What does the cow say?')
+  .derive('packageName', ({ projectName }) => projectName.toLowerCase().trim().split(/\s+/).join('-'), {
+    searchText: '~~package-name~~',
+  })
+  .prompt('text', 'What does the cow say?', { transform: (input) => input.split("'").join("\\'") })
   .setupFiles()
   .run('npm install')
   .run('npm run build')
   .log(
-    ({ chalk, values }) => `
+    ({ chalk, projectName }) => `
 Your cow is ready to talk!
 
 Next you'll want to run
-  ${chalk.green(`cd ${values.projectName}`)}
+  ${chalk.green(`cd ${projectName}`)}
   ${chalk.green('npm start')}`
   );
