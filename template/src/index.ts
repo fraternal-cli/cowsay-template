@@ -1,7 +1,5 @@
 import cowsay from 'cowsay';
 
-console.log(
-  cowsay.say({
-    text: '__text__',
-  })
-);
+const text = '__text__';
+
+console.log(cowsay.say({ text }));
